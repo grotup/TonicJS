@@ -1,0 +1,86 @@
+[
+  {
+    "libelle" : "USE",
+    "description" : "Two notes. When you get bored, keep one and pick a new one. Repeat as long as you can.",
+    "img" : null,
+    "chords" : 2
+  },
+  {
+    "libelle" : "USE",
+    "description" : "Three notes until you get bored. Then pick three new ones. Repeat as long as you can.",
+    "img" : null,
+    "chords" : 3
+  },
+  {
+    "libelle" : "PLAY THIS GRAPH",
+    "description" : "The vertical axis is pitch. The horizontal is time. It should take about 2 minutes to play.",
+    "img" : null
+  },
+  {
+    "libelle" : "LIMIT",
+    "description" : "Yourself to three notes. You can play them in any octave. Do this for as long as you can.",
+    "img" : null,
+    "chords" : 3
+  },
+  {
+    "libelle" : "DANCE",
+    "description" : "Or gesture using a part of your body. Now translate the motion through your instrument.",
+    "img" : null
+  },
+  {
+    "libelle" : "SHORT",
+    "description" : "Notes only. Keep everything choppy, using as many pitches as you like. Do this for as long as you can.",
+    "img" : null
+  },
+  {
+    "libelle" : "READ",
+    "description" : "A piece of text from a book or magazine using your instrument. Use only three note, in any octage. Trade setence if you're in a group.",
+    "img" : null,
+    "chords" : 3
+  },
+  {
+    "libelle" : "CLAP",
+    "description" : "Or tap out any repeating ryhtm. Now play it with your instrument using as many pitches as you like.",
+    "img" : null
+  },
+  {
+    "libelle" : "USE",
+    "description" : "Five notes in only one octave.",
+    "img" : null,
+    "chords" : 5
+  },
+  {
+    "libelle" : "USE",
+    "description" : "Four notes in any octave. When you get bored, keep two and pick two new ones. Repeat.",
+    "img" : null,
+    "chords" : 4
+  },
+  {
+    "libelle" : "USE",
+    "description" : "Four notes in only one octave.",
+    "img" : null,
+    "chords" : 4
+  },
+  {
+    "libelle" : "PICK",
+    "description" : "Two groups of 4 notes. These are your “chords.” Improvise with the first group for 8 measures. Then switch. Repeat for as long as you can.",
+    "img" : null,
+    "chords" : 8
+  },
+  {
+    "libelle" : "SIMON",
+    "description" : "Play musical “simon.” Play two random notes. Repeat over and over, adding a new note to the end of the sequence each time. See how long you can go.",
+    "img" : null,
+    "chords" : 2
+  },
+  {
+    "libelle" : "PLAY",
+    "description" : "A melody that you know well. Now repeat it over and over, but alter it by changing some (or all) of the pitches. Do not change the rhythms.",
+    "img" : null
+  },
+  {
+    "libelle" : "DESCRIBE",
+    "description" : "What you did last weekend, using whatever notes or sounds you like.",
+    "img" : null
+  }
+]
