@@ -12,12 +12,10 @@ angular.module('TonicApp', [])
       });
 
     $scope.randomizeCard = function(){
+      $scope.chords = [];
       $scope.actualCard = allCards[Math.floor(Math.random()*allCards.length)];
-      console.log($scope.actualCard)
       if($scope.actualCard.chords ){
-        for (var i = 0; i < $scope.actualCard.chords ; i++) {
-          $scope.chords.push(TonicService.randomChord());
-        }
+        $scope.chords = TonicService.getRandomChords($scope.actualCard.chords);
       }
     };
   }])
@@ -47,6 +45,28 @@ angular.module('TonicApp', [])
         "img" : undefined
       }
     ];
+
+		this.getRandomChords = function(iNbCards){
+      console.log(iNbCards);
+      var ret = [];
+
+			var tmpChords = chords.slice();
+      var randomIdx = -1;
+			for(var i = 0 ; i < iNbCards ; i++){
+        randomIdx = Math.floor(Math.random()*chords.length);
+        if(ret.indexOf(tmpChords[randomIdx]) != -1){
+          i++;
+        }
+        else{
+          ret.push(tmpChords[randomIdx]);  
+          // Suppression de l'élement sélectionné, pour éviter les doublons
+          tmpChords.splice(randomIdx, 1);
+          console.log(tmpChords);
+        }
+			}
+
+      return ret;
+		};
 
     this.randomChord = function(){
       return chords[Math.floor(Math.random()*chords.length)];
