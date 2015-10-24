@@ -47,4 +47,15 @@ angular.module('TonicApp', [])
 
       return ret;
     };
-  }]);
+  }])
+  .directive('tonicCard', function(){
+    return {
+      restrict : 'E',
+      templateUrl : 'templates/card.html',
+      scope: {
+        actualCard : '=card',
+        chords : '=chords'
+      }
+    };
+  });
+
