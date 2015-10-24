@@ -5,7 +5,7 @@ angular.module('TonicApp', [])
     $scope.chords = [];
 
     var allCards = [];
-    $http.get('/resources/cards.json')
+    $http.get('./resources/cards.json')
       .then(function(res){
         allCards = res.data;
         $scope.randomizeCard();
