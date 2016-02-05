@@ -1,34 +1,28 @@
 "use strict";
 angular.module('TonicApp', [])
 
-  .controller('TonicController', ["$scope", "$http", function($scope, $http){
+  .controller('TonicController', ["$scope", "$http", "cardService", "chordService", function($scope, $http, cardService, chordService){
     $scope.chords = [];
-
-    var allCards = [];
-    var allChords = [];
-    $http.get('./resources/cards.json')
-      .then(function(res){
-        allCards = res.data;
-        $http.get('./resources/chords.json')
-          .then(function(res){
-            allChords = res.data;
-            $scope.randomizeCard();
-          });
-      });
 
     $scope.randomizeCard = function(){
       $scope.chords = [];
-      $scope.actualCard = getRandomCard();
+      $scope.actualCard = cardService.getRandomCard();
       if($scope.actualCard.chords ){
-        $scope.chords = getRandomChords($scope.actualCard.chords);
+        $scope.chords = chordService.getRandomChords($scope.actualCard.chords);
       }
     };
 
-    var getRandomCard = function(){
-      return allCards[Math.floor(Math.random()*allCards.length)];
-    };
+    $scope.randomizeCard();
+  }])
+  .service('chordService', ["$http", function($http){
+    var allChords = [];
 
-    var getRandomChords = function(iNbChords){
+    $http.get('./resources/chords.json')
+      .then(function(res){
+        allChords = res.data;
+      });
+
+    this.getRandomChords = function(iNbChords){
       var ret = [];
 
       var tmpChords = allChords.slice();
@@ -39,14 +33,30 @@ angular.module('TonicApp', [])
           i++;
         }
         else{
-          ret.push(tmpChords[randomIdx]);  
+          ret.push(tmpChords[randomIdx]);
           // Suppression de l'élement sélectionné, pour éviter les doublons
           tmpChords.splice(randomIdx, 1);
         }
       }
 
       return ret;
-    };
+    }
+  }])
+  .service('cardService', ["$http", function($http){
+    var allCards = [];
+
+
+
+    this.init = function(){
+      $http.get('./resources/cards.json')
+        .then(function(res){
+          allCards = res.data;
+        });
+    }
+
+    this.getRandomCard = function(){
+      return allCards[Math.floor(Math.random()*allCards.length)];
+    }
   }])
   .directive('tonicCard', function(){
     return {
@@ -58,4 +68,3 @@ angular.module('TonicApp', [])
       }
     };
   });
-
