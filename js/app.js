@@ -24,33 +24,41 @@ angular.module('TonicApp', [])
 
     this.getRandomChords = function(iNbChords, callback){
       if(allChords.length === 0){
-        $http.get('./resources/chords.json')
-          .then(function(res){
-            allChords = res.data;
-            getRandomChords(iNbChords, callback);
-          });
+        fetchChords(function(){
+          getRandomChords(iNbChords, callback);
+        })
       }
       else{
         getRandomChords(iNbChords, callback);
       }
     }
 
-    var getRandomChords = function(iNbChords, callback) {
-      var ret = [];
-      var tmpChords = allChords.slice();
-      var randomIdx = -1;
-      for(var i = 0 ; i < iNbChords ; i++){
-        randomIdx = Math.floor(Math.random()*allChords.length);
-        if(ret.indexOf(tmpChords[randomIdx]) != -1){
-          i++;
-        }
-        else{
-          ret.push(tmpChords[randomIdx]);
-          // Suppression de l'élement sélectionné, pour éviter les doublons
-          tmpChords.splice(randomIdx, 1);
-        }
+    var fetchChords = function(callback){
+      if(allChords.length === 0){
+        $http.get('./resources/chords.json')
+          .then(function(res){
+            allChords = res.data;
+            callback();
+          });
       }
-      callback(ret);
+      else{
+        callback();
+      }
+    }
+
+    var randomArray = function(array){
+      var ret = array.slice();
+      for (var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = ret[i];
+        ret[i] = ret[j];
+        ret[j] = temp;
+      }
+      return ret;
+    }
+
+    var getRandomChords = function(iNbChords, callback) {
+      callback(randomArray(allChords).slice(0, iNbChords));
     }
   }])
   .service('cardService', ["$http", function($http){
