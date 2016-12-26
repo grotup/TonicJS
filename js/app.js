@@ -1,14 +1,15 @@
 "use strict";
-angular.module('TonicApp', [])
+angular.module('TonicApp', ['ngMaterial'])
 
   .controller('TonicController', ["$scope", "$http", function($scope, $http){
     $scope.chords = [];
+    $scope.cards = [];
 
     var allCards = [];
     var allChords = [];
     $http.get('./resources/cards.json')
       .then(function(res){
-        allCards = res.data;
+        allCards = $scope.cards = res.data;
         $http.get('./resources/chords.json')
           .then(function(res){
             allChords = res.data;
@@ -18,11 +19,23 @@ angular.module('TonicApp', [])
 
     $scope.randomizeCard = function(){
       $scope.chords = [];
-      $scope.actualCard = getRandomCard();
-      if($scope.actualCard.chords ){
+      changeCard(getRandomCard());
+    };
+
+    $scope.choseCard = function(card){
+      $scope.searchCard = '';
+      changeCard(card);
+    }
+
+    var changeCard = function(card){
+      $scope.actualCard = card;
+      if($scope.actualCard.chords && $scope.actualCard.chords !== 0){
         $scope.chords = getRandomChords($scope.actualCard.chords);
       }
-    };
+      else{
+        $scope.chords = [];
+      }
+    }
 
     var getRandomCard = function(){
       return allCards[Math.floor(Math.random()*allCards.length)];

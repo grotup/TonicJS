@@ -1,12 +1,20 @@
-<div class="col s12 m6">
-	<div class="card blue-grey darken-1">
-		<div class="card-content white-text">
-			<span class="card-title">{{actualCard.libelle}}</span>
-			<p>{{actualCard.description}}</p>
-			<img ng-src="{{actualCard.img}}" alt="" />
-		</div>
-		<div class="card-action">
-			<a href="#" ng-repeat="chord in chords">{{chord}}</a>
-		</div>
-	</div>	
-</div>
+<md-card>
+	<md-card-title>
+      <md-card-title-text>
+        <span class="md-headline">
+        	{{actualCard.libelle}}
+    	</span>
+        <span class="md-subhead">
+			<p>
+        		{{actualCard.description}}
+    		</p>
+        </span>
+      </md-card-title-text>
+      <md-card-title-media>
+        <div class="md-media-sm card-media"></div>
+      </md-card-title-media>
+	</md-card-title>
+	<md-card-actions layout="row" layout-align="start center">
+	    <md-button ng-repeat="chord in chords">{{chord}}</md-button>
+	</md-card-actions>
+</md-card>

@@ -14,7 +14,8 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "~1.4.7",
-    "Materialize": "materialize#~0.97.1"
+    "angular": "^1.6.1",
+    "Materialize": "materialize#~0.97.1",
+    "angular-material": "^1.1.1"
   }
 }
