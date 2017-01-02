@@ -2,9 +2,6 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="bower_components/Materialize/dist/css/materialize.min.css"> -->
-    <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>TonicJS</title>
@@ -12,27 +9,26 @@
   <body ng-app="TonicApp" ng-cloak>
     <md-toolbar layout="row" class="md-toolbar-tools">
       <md-button class="menu md-icon-button" hide-gt-sm ng-click="app.toggleList()" aria-label="Show User List">
-        <md-icon md-svg-icon="menu"></md-icon>
+        <md-icon>menu</md-icon>
+        <md-icon md-font-icon="menu"></md-icon>
       </md-button>
       <h1>Tonic JS</h1>
     </md-toolbar>
-
-    <div ng-controller="TonicController" ng-cloak >
-      <md-button class="md-raised md-primary" ng-click="randomizeCard()">Random card</md-button>
+    <div ng-controller="TonicController as vm" ng-cloak >
+      <md-button class="md-raised md-primary" ng-click="vm.randomizeCard()">Random card</md-button>
       <md-content class="md-padding" layout-xs="column" layout="row">
-
         <div flex-xs flex-gt-xs="50" layout="column">
-          <tonic-card card="actualCard" chords="chords"></tonic-card>
+          <tonic-card card="vm.actualCard" chords="vm.chords"></tonic-card>
         </div>
-
         <md-list flex>
           <md-subheader class="md-no-sticky">
             <md-input-container class="md-block" flex-gt-sm>
-              <label>Or choose a card</label>
-              <input ng-model="searchCard">
+              <label>Or choose a card </label>
+              <input ng-model="vm.searchCard">
+              <md-icon> search </md-icon>
             </md-input-container>
           </md-subheader>
-          <md-list-item class="md-3-line" ng-repeat="item in cards | filter:searchCard" ng-click="choseCard(item)">
+          <md-list-item class="md-3-line" ng-repeat="item in vm.cards | filter:vm.searchCard" ng-click="vm.choseCard(item)">
             <div class="md-list-item-text" layout="column">
               <h3>{{ item.libelle }}</h3>
               <p>{{ item.description }}</p>
@@ -41,23 +37,7 @@
           </md-list-item>
         </md-list>
       </md-content>
-      <md-content>
-
-      </md-content>
     </div>    
-
-    <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
-    <script type="text/javascript" src="bower_components/Materialize/dist/js/materialize.min.js"></script>
-    <script src="bower_components/angular/angular.min.js" charset="utf-8"></script>
-
-    <!-- Angular Material Dependencies -->
-    <script src="bower_components/angular-animate/angular-animate.min.js"></script>
-    <script src="bower_components/angular-aria/angular-aria.min.js"></script>
-
-    <!-- Angular Material Javascript now available via Google CDN; version 1.0.7 used here -->
-    <script src="bower_components/angular-material/angular-material.min.js"></script>
-
-    <script src="js/init.js" charset="utf-8"></script>
-    <script src="js/app.js" charset="utf-8"></script>
+    <script src="lib/bundle.js" charset="utf-8"></script>
   </body>
 </html>

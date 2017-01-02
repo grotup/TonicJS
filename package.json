@@ -1,0 +1,36 @@
+{
+  "name": "tonicjs",
+  "version": "1.0.0",
+  "description": "AngularJS implementation of the tonic game for musicians :",
+  "main": "js/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --inline",
+    "start_production": "webpack -p && http-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/grotup/TonicJS.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/grotup/TonicJS/issues"
+  },
+  "homepage": "https://github.com/grotup/TonicJS#readme",
+  "dependencies": {
+    "angular": "^1.6.1",
+    "angular-animate": "^1.6.1",
+    "angular-aria": "^1.6.1",
+    "angular-material": "^1.1.1",
+    "angular-messages": "^1.6.1",
+    "jquery": "^3.1.1"
+  },
+  "devDependencies": {
+    "css-loader": "^0.26.1",
+    "json-loader": "^0.5.4",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.14.0",
+    "webpack-dev-server": "^1.16.2"
+  }
+}
